@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OSLProject Version="1.00" Name="RegexpToNFA" SubjectID="11c951f4-9b13-40e1-8b73-39ba7d73b89b" ProjectTemplateID="4c23da0f-8ae2-4370-bf9f-8c3fc656b942">
+	<Configurations>
+		<Configuration Name="Debug">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="_DEBUG" GenerateDebugInformation="-1" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalDependencies="&quot;$(CPLInstallDir)Dump\lib\RegexpToNFA_Demo.o&quot;"/>
+			<Tool Name="PostBuildEventTool"/>
+			<VisualContext>
+				<WatchPoints>
+					<WatchPoint FunctionName="post2nfa" ObserverID="568B665B-0108-4b33-8D02-F6C797E1ABBB">
+					</WatchPoint>
+				</WatchPoints>
+			</VisualContext>
+		</Configuration>
+		<Configuration Name="Release">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="NDEBUG"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="头文件" Filter="h;hpp;hxx">
+			<File RelativePath=".\NFAFragmentStack.h">
+			</File>
+			<File RelativePath=".\OutputResult.h">
+			</File>
+			<File RelativePath=".\RegexpToNFA.h">
+			</File>
+			<File RelativePath=".\RegexpToPost.h">
+			</File>
+		</Filter>
+		<Filter Name="源文件" Filter="cpp;c;cc;cxx">
+			<File RelativePath=".\main.c">
+			</File>
+			<File RelativePath=".\NFAFragmentStack.c">
+			</File>
+			<File RelativePath=".\OutputResult.c">
+			</File>
+			<File RelativePath=".\RegexpToPost.c">
+			</File>
+		</Filter>
+		<File RelativePath=".\input1.txt">
+		</File>
+		<File RelativePath=".\input2.txt">
+		</File>
+		<File RelativePath=".\input3.txt">
+		</File>
+		<File RelativePath=".\input4.txt">
+		</File>
+		<File RelativePath=".\input5.txt">
+		</File>
+		<File RelativePath=".\input6.txt">
+		</File>
+		<File RelativePath=".\input7.txt">
+		</File>
+		<File RelativePath=".\input8.txt">
+		</File>
+		<File RelativePath=".\makefile">
+		</File>
+		<File RelativePath=".\output1.txt">
+		</File>
+		<File RelativePath=".\output2.txt">
+		</File>
+		<File RelativePath=".\output3.txt">
+		</File>
+		<File RelativePath=".\output4.txt">
+		</File>
+		<File RelativePath=".\output5.txt">
+		</File>
+		<File RelativePath=".\output6.txt">
+		</File>
+		<File RelativePath=".\output7.txt">
+		</File>
+		<File RelativePath=".\output8.txt">
+		</File>
+	</Files>
+</OSLProject>
