@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OSLProject Version="1.00" Name="NFAToDFA" SubjectID="11c951f4-9b13-40e1-8b73-39ba7d73b89b" ProjectTemplateID="04c3e277-faed-4ab5-a22d-8218c07edf52">
+	<Configurations>
+		<Configuration Name="Debug">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="_DEBUG" GenerateDebugInformation="-1" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalDependencies="&quot;$(CPLInstallDir)Dump\lib\NFAToDFA_Demo.o&quot;"/>
+			<Tool Name="PostBuildEventTool"/>
+			<VisualContext>
+				<WatchPoints>
+					<WatchPoint FunctionName="post2dfa" ObserverID="6183D540-E3EF-45d9-BEB5-D69242FBD682">
+					</WatchPoint>
+				</WatchPoints>
+			</VisualContext>
+		</Configuration>
+		<Configuration Name="Release">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="NDEBUG"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="头文件" Filter="h;hpp;hxx">
+			<File RelativePath=".\NFAFragmentStack.h">
+			</File>
+			<File RelativePath=".\NFAStateStack.h">
+			</File>
+			<File RelativePath=".\NFAToDFA.h">
+			</File>
+			<File RelativePath=".\OutputResult.h">
+			</File>
+			<File RelativePath=".\PostToNFA.h">
+			</File>
+			<File RelativePath=".\RegexpToPost.h">
+			</File>
+		</Filter>
+		<Filter Name="源文件" Filter="cpp;c;cc;cxx">
+			<File RelativePath=".\main.c">
+			</File>
+			<File RelativePath=".\NFAFragmentStack.c">
+			</File>
+			<File RelativePath=".\NFAStateStack.c">
+			</File>
+			<File RelativePath=".\OutputResult.c">
+			</File>
+			<File RelativePath=".\PostToNFA.c">
+			</File>
+			<File RelativePath=".\RegexpToPost.c">
+			</File>
+		</Filter>
+		<File RelativePath=".\input1.txt">
+		</File>
+		<File RelativePath=".\input2.txt">
+		</File>
+		<File RelativePath=".\input3.txt">
+		</File>
+		<File RelativePath=".\makefile">
+		</File>
+		<File RelativePath=".\output1.txt">
+		</File>
+		<File RelativePath=".\output2.txt">
+		</File>
+		<File RelativePath=".\output3.txt">
+		</File>
+	</Files>
+</OSLProject>

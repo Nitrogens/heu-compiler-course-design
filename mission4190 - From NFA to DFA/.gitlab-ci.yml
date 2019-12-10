@@ -1,0 +1,140 @@
+image: "registry.cn-hangzhou.aliyuncs.com/engintime/ubuntu_16.04_program:latest"
+stages:
+  - make
+  - code-analysis
+  - case1
+  - case2
+  - case3
+ 
+
+variables:  
+  TEACHERCHECK_REPO: "engintime/cp-lab/teachers-packet/Lab02.git"
+  
+.codecode-runner: &codecode-runner
+  tags:
+    - ubuntu-16.04
+    - short-job
+
+.codecode-analysis-runner: &codecode-analysis-runner
+  tags:
+    - ubuntu-16.04
+    - short-job
+    - code-analysis
+
+make:
+  stage: make
+  <<: *codecode-runner
+  script:
+  - gcc --version
+  - make
+  - ./app < input1.txt > user_output1.txt
+  - execscore.sh 40
+  only: 
+    - master 
+    
+code-analysis:
+  stage: code-analysis
+  <<: *codecode-analysis-runner
+  script:
+  - make
+  - mkdir -p build
+  - cppcheck -v --force --enable=all --xml -I./ ./ 2> ./build/cppcheck-report.xml
+  - bash -c 'find ./ -regex ".*\.c\|.*\.h" | vera++ -S -s -d -c ./build/vera-report.xml'
+  - valgrind --xml=yes --xml-file=./build/valgrind-report.xml ./app < input1.txt
+  - sonar-scanner -Dsonar.projectKey=ProjectKey-$CI_PROJECT_ID -Dsonar.projectName=$CI_PROJECT_NAME -Dsonar.links.homepage=$CI_PROJECT_URL -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID -Dsonar.gitlab.url=$CODECODE_PROTOCOL$CODECODE_DOMAIN
+  allow_failure: true
+  only:
+    - master
+    
+case1:
+  stage: case1
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input1.txt > user_output1.txt
+  - diff output1.txt user_output1.txt -b -B -y -i -W 100
+  - execscore.sh 60
+  only: 
+    - master 
+
+teacher-check1:   
+  stage: case1
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input1.txt
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${CI_PROJECT_FORKSOURCE} template
+  - diff template/.gitlab-ci.yml .gitlab-ci.yml -b -B -y -i -W 100
+  - diff template/input1.txt input1.txt -b -B -y -i -W 100
+  - diff template/output1.txt output1.txt -b -B -y -i -W 100
+  - fileidentity.sh
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${TEACHERCHECK_REPO} teacher_check
+  - ./app < teacher_check/input1.txt > user_output1.txt
+  - diff teacher_check/output1.txt user_output1.txt -b -B -y -i -W 100
+  - extracase.sh
+  only: 
+    - master 
+  when: manual
+  allow_failure: true
+
+case2:
+  stage: case2
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input2.txt > user_output2.txt
+  - diff output2.txt user_output2.txt -b -B -y -i -W 100
+  - execscore.sh 70
+  only: 
+    - master 
+    
+teacher-check2:   
+  stage: case2
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input2.txt
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${CI_PROJECT_FORKSOURCE} template
+  - diff template/.gitlab-ci.yml .gitlab-ci.yml -b -B -y -i -W 100
+  - diff template/input2.txt input2.txt -b -B -y -i -W 100
+  - diff template/output2.txt output2.txt -b -B -y -i -W 100
+  - fileidentity.sh
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${TEACHERCHECK_REPO} teacher_check
+  - ./app < teacher_check/input2.txt > user_output2.txt
+  - diff teacher_check/output2.txt user_output2.txt -b -B -y -i -W 100
+  - extracase.sh
+  only: 
+    - master 
+  when: manual
+  allow_failure: true
+    
+case3:
+  stage: case3
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input3.txt > user_output3.txt
+  - diff output3.txt user_output3.txt -b -B -y -i -W 100
+  - execscore.sh 100
+  only: 
+    - master 
+    
+teacher-check3:   
+  stage: case3
+  <<: *codecode-runner
+  script:
+  - make
+  - ./app < input3.txt
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${CI_PROJECT_FORKSOURCE} template
+  - diff template/.gitlab-ci.yml .gitlab-ci.yml -b -B -y -i -W 100
+  - diff template/input3.txt input3.txt -b -B -y -i -W 100
+  - diff template/output3.txt output3.txt -b -B -y -i -W 100
+  - fileidentity.sh
+  - git clone ${CODECODE_PROTOCOL}gitlab-ci-token:${CI_JOB_TOKEN}@${CODECODE_DOMAIN}/${TEACHERCHECK_REPO} teacher_check
+  - ./app < teacher_check/input3.txt > user_output3.txt
+  - diff teacher_check/output3.txt user_output3.txt -b -B -y -i -W 100
+  - extracase.sh
+  only: 
+    - master 
+  when: manual
+  allow_failure: true
