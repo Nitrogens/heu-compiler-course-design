@@ -348,18 +348,33 @@ DFA* post2dfa(DFA* pDFA, char *postfix)
 	return pDFA;
 }
 
+// 清除所有的 NFA
 void FreeNFA()
 {
 	int i;
-	for (int i = 1; i <= cnt; i++) {
+	for (i = 1; i <= cnt; i++)
+	{
 		free(NFAStateList[i]);
 	}
 }
 
-void FreeDFA(DFA* dfa) {
+// 清除所有的 DFA
+void FreeDFA(DFA* dfa)
+{
 	int i;
-	for (i = 0; i < dfa->length; i++) {
+	Transform* pTransform;
+	Transform* nxt;
+	for (i = 0; i < dfa->length; i++)
+	{
+		// 遍历当前 DFA 状态的所有转换并清除
+		for (pTransform = dfa->DFAlist[i]->firstTran; pTransform != NULL; pTransform = nxt)
+		{
+			nxt = pTransform->NextTrans;
+			free(pTransform);
+		}
+		// 清除当前 DFA 状态	
 		free(dfa->DFAlist[i]);
 	}
+	// 清除 DFA 状态列表
 	free(dfa);
 }
