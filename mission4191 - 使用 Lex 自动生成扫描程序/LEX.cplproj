@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OSLProject Version="1.00" Name="LEX" SubjectID="11c951f4-9b13-40e1-8b73-39ba7d73b89b" ProjectTemplateID="6fdce38e-9162-4060-b427-666eb3e3556b">
+	<Configurations>
+		<Configuration Name="Debug" CommandArgument="sample.txt">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="_DEBUG" GenerateDebugInformation="-1"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalLibraries="fl"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+		<Configuration Name="Release" CommandArgument="sample.txt">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="NDEBUG"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalLibraries="fl"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="Lex输入文件">
+			<File RelativePath=".\scan.txt">
+				<FileConfiguration Name="Debug">
+					<Tool Name="CustomBuildTool" CommandLine="flex.exe -b -omain.c &quot;$(InputPath)&quot;&#xA;" Description="正在使用 Lex 生成扫描程序..." Outputs="lex.backup" AdditionalDependencies=""/>
+				</FileConfiguration>
+				<FileConfiguration Name="Release">
+					<Tool Name="CustomBuildTool" CommandLine="flex.exe -b -omain.c &quot;$(InputPath)&quot;&#xA;" Description="正在使用 Lex 生成扫描程序..." Outputs="lex.backup" AdditionalDependencies=""/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter Name="TINY语言样例">
+			<File RelativePath=".\sample.txt">
+			</File>
+		</Filter>
+		<Filter Name="头文件">
+			<File RelativePath=".\define.h">
+			</File>
+		</Filter>
+		<Filter Name="源文件" Filter="cpp;c;cc;cxx">
+			<File RelativePath=".\main.c">
+			</File>
+		</Filter>
+	</Files>
+</OSLProject>
