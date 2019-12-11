@@ -22,6 +22,9 @@ NFAState* CreateNFAState()
 	s->Next2 = NULL;
 	s->AcceptFlag = 0;
 	
+	cnt++;
+	NFAStateList[cnt] = s;
+	
 	return s;
 }
 

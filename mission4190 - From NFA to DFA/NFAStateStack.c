@@ -55,7 +55,7 @@ void PushNFAState(NFAStateStack* pS, NFAState* Elem)
 NFAState* PopNFAState(NFAStateStack* pS)
 {
 	int pos;
-	NFAState* State = 0;
+	NFAState* State = NULL;
 	
 	//
 	// Õ»Îª¿Õ£¬³öÕ»Ê§°Ü

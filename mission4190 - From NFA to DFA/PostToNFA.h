@@ -15,6 +15,11 @@
 // 在此处定义数据结构
 //
 
+// 存储所有的 NFA 状态指针
+static NFAState* NFAStateList[5005];
+// 存储 NFA 状态数量
+static int cnt = 0;
+
 //
 // 在此处声明函数
 //

@@ -12,9 +12,9 @@ NFAStateStack StateStack;		// 栈。用于储存 NFA 状态
 const char VoidTrans = '$'; // 表示空转换
 
 
-// char* regexp = "a(a|1)*";			 // 例 1
+char* regexp = "a(a|1)*";			 // 例 1
 // char* regexp = "(aa|b)*a(a|bb)*"; // 例 2
-char* regexp = "(a|b)*a(a|b)?"; 	 // 例 3
+// char* regexp = "(a|b)*a(a|b)?"; 	 // 例 3
 
 char regexp_ci[256];
 
@@ -51,6 +51,9 @@ int main(int argc, char **argv)
 	// 将 DFA 打印输出
 	//
 	OutputResult(dfa);
+	
+	FreeDFA(dfa);
+	FreeNFA();
 				
 	return 0;
 }
@@ -211,7 +214,7 @@ void AddNFAStateArrayToTransform(NFAState** NFAStateArray, int Count, Transform*
 			}
 		}
 		// 如果未找到，则将当前 NFA 状态加入到 DFA 状态集合中
-		if (!is_find)
+		if (is_find == 0)
 		{
 			pTransform->NFAlist[pTransform->NFAStateCount] = pNFA[i];
 			pTransform->NFAStateCount++;
@@ -297,7 +300,9 @@ DFA* post2dfa(DFA* pDFA, char *postfix)
 
 			// 如果 NFA 状态是接受状态或者转换是空转换，就跳过此 NFA 状态
 			if (NFAStateTemp->Transform == VoidTrans || NFAStateTemp->AcceptFlag == 1)
+			{
 				continue;
+			}
 
 			// 调用 Closure 函数构造 NFA 状态的ε-闭包
 			Count = 0;
@@ -341,4 +346,20 @@ DFA* post2dfa(DFA* pDFA, char *postfix)
 	}
 
 	return pDFA;
+}
+
+void FreeNFA()
+{
+	int i;
+	for (int i = 1; i <= cnt; i++) {
+		free(NFAStateList[i]);
+	}
+}
+
+void FreeDFA(DFA* dfa) {
+	int i;
+	for (i = 0; i < dfa->length; i++) {
+		free(dfa->DFAlist[i]);
+	}
+	free(dfa);
 }
