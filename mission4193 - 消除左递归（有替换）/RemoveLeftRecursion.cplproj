@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OSLProject Version="1.00" Name="RemoveLeftRecursion" SubjectID="11c951f4-9b13-40e1-8b73-39ba7d73b89b" ProjectTemplateID="de4e701a-5798-4d6d-83e7-f1c9738e1a5e">
+	<Configurations>
+		<Configuration Name="Debug">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="_DEBUG" GenerateDebugInformation="-1" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalDependencies="&quot;$(CPLInstallDir)Dump\lib\RemoveLeftRecursion_Demo.o&quot;"/>
+			<Tool Name="PostBuildEventTool"/>
+			<VisualContext>
+				<WatchPoints>
+					<WatchPoint FunctionName="RemoveLeftRecursion" ObserverID="62CEB410-D0CC-45a4-894E-60F9061139CD">
+					</WatchPoint>
+				</WatchPoints>
+			</VisualContext>
+		</Configuration>
+		<Configuration Name="Release">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="NDEBUG" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="头文件" Filter="h;hpp;hxx">
+			<File RelativePath=".\RemoveLeftRecursion.h">
+			</File>
+		</Filter>
+		<Filter Name="源文件" Filter="cpp;c;cc;cxx">
+			<File RelativePath=".\main.c">
+			</File>
+		</Filter>
+		<File RelativePath=".\input1.txt">
+		</File>
+		<File RelativePath=".\makefile">
+		</File>
+		<File RelativePath=".\output1.txt">
+		</File>
+	</Files>
+</OSLProject>
