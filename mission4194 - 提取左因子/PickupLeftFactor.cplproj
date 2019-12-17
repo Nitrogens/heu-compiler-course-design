@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OSLProject Version="1.00" Name="PickupLeftFactor" SubjectID="11c951f4-9b13-40e1-8b73-39ba7d73b89b" ProjectTemplateID="fd7b8f4b-7528-4253-80dc-138ee36bc953">
+	<Configurations>
+		<Configuration Name="Debug">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="_DEBUG" GenerateDebugInformation="-1" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool" AdditionalDependencies="&quot;$(CPLInstallDir)Dump\lib\PickupLeftFactor_Demo.o&quot;"/>
+			<Tool Name="PostBuildEventTool"/>
+			<VisualContext>
+				<WatchPoints>
+					<WatchPoint FunctionName="PickupLeftFactor" ObserverID="909D0AA6-53A4-4383-991F-9C202552E5E4">
+					</WatchPoint>
+				</WatchPoints>
+			</VisualContext>
+		</Configuration>
+		<Configuration Name="Release">
+			<Tool Name="PreBuildEventTool"/>
+			<Tool Name="CustomBuildTool"/>
+			<Tool Name="GCCCompilerTool" PreprocessorDefinitions="NDEBUG" AdditionalOptions="-std=c99"/>
+			<Tool Name="PreLinkEventTool"/>
+			<Tool Name="GCCLinkerTool"/>
+			<Tool Name="PostBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="头文件" Filter="h;hpp;hxx">
+			<File RelativePath=".\PickupLeftFactor.h">
+			</File>
+		</Filter>
+		<Filter Name="源文件" Filter="cpp;c;cc;cxx">
+			<File RelativePath=".\main.c">
+			</File>
+		</Filter>
+		<File RelativePath=".\input1.txt">
+		</File>
+		<File RelativePath=".\makefile">
+		</File>
+		<File RelativePath=".\output1.txt">
+		</File>
+	</Files>
+</OSLProject>
